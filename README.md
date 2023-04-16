@@ -3,16 +3,20 @@
 The idea is to get flexibility and full control in ways to initialize and migrate databases using various DB engines: SQL Server and SQLite supported.
 
 To create SQLServer database, initialize it with some data, then connect to it and run tests:
+```bash
 $> cd phi.database.sqlserver
 $> dotnet run
 $> cd phi.repository.sqlserver.ef-scaffolded-model
 $> dotnet run
+```
 
 To create SQLite database and initialize it with some test data, then connect to it and run tests:
+```bash
 $> cd phi.database.sqlite
 $> dotnet run
 $> cd phi.repository.sqlite.ef
 $> dotnet run
+```
 
 The main different between two models is that [PhiUser] table in SQL Server is using [string] Identity Field, while SQLite model is using simple [integer] Identity.
 This is done so due to performance reasons (in SQLite) and different use cases for those two engines (enterprise for sharding/partitioning vs. lightweight microservices).
