@@ -1,0 +1,20 @@
+version: '3.6'
+services:
+  db:
+    image: postgres
+    restart: always
+    environment:
+      POSTGRES_PASSWORD: Secret!Passw0rd
+      POSTGRES_USER: postgres
+      POSTGRES_DB: PhiDatabase
+    ports:
+      - 5432:5432
+  db-migrations:
+    build:
+      context: DbMigrator/
+      dockerfile: ./Dockerfile
+    depends_on: 
+      - db
+    environment:
+      DB_CONNECTION: "Host=db;User Id=postgres;Password=Secret!Passw0rd;Database=PhiDatabase;Port=5432"
+    restart: on-failure

@@ -1,0 +1,25 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net6.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="scripts\phi0001_postgres_create_tables.sql" />
+    <None Remove="scripts\phi0002_postgres_init.sql" />
+    <None Remove="scripts\phi0003_postgres_add_blog_records.sql" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="scripts\phi0001_postgres_create_tables.sql" />
+    <EmbeddedResource Include="scripts\phi0002_postgres_init.sql" />
+    <EmbeddedResource Include="scripts\phi0003_postgres_add_blog_records.sql" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="dbup-postgresql" Version="4.6.0" />
+  </ItemGroup>
+</Project>

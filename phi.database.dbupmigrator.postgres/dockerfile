@@ -1,0 +1,8 @@
+FROM mcr.microsoft.com/dotnet/core/sdk:6.0
+WORKDIR /build
+COPY Phi.Database.DbUpMigrator.Postgres.csproj ./
+RUN dotnet restore 
+COPY . .
+RUN dotnet publish -o /publish 
+WORKDIR /publish 
+CMD ["sh", "-c", "dotnet Phi.Database.DbUpMigrator.Postgres.dll \"${DB_CONNECTION}\""]
